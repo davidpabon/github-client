@@ -16,6 +16,10 @@ func main() {
 		Token: &oauth.Token{AccessToken: apiKey},
 	}
 
+	//Credentials
+	username := "davidpabon"
+	organization := "koombea"
+
 	//Client
 	client := github.NewClient(secret.Client())
 	//var timeZone = map[string]Repo
@@ -24,14 +28,14 @@ func main() {
 	start := time.Now().Unix()
 	
 	//Fetch User Events By Organizations
-	opts := &github.ListOptions{Page: 0, PerPage: 10}
-	events, _, err := client.Activity.ListUserEventsForOrganization("koombea", "davidpabon", opts)
+	opts := &github.ListOptions{Page: 0, PerPage: 30}
+	events, _, err := client.Activity.ListUserEventsForOrganization(organization, username, opts)
 
 	if err != nil {
 		fmt.Printf("Error listing events: %s\n", err)
 	} else {	
 		
-		fmt.Printf("Total Events : %v\n", len(events))
+		fmt.Printf("Total Events: %v\n", len(events))
 		
 		for _, event := range events {
 
@@ -69,7 +73,7 @@ func main() {
 
 	end := time.Now().Unix()
 	fmt.Printf("Total Repos: %v\n", len(repos))
-	fmt.Printf("Total Repos: %v\n", repos)
+	//fmt.Printf("Total Repos: %v\n", repos)
 	fmt.Printf("Time elapsed: %v - %v = %v\n", end, start, end - start)
 
 }
@@ -83,6 +87,10 @@ func main() {
 		Token: &oauth.Token{AccessToken: apiKey},
 	}
 
+	//Credentials
+	username := "davidpabon"
+	organization := "koombea"
+
 	//Client
 	client := github.NewClient(secret.Client())
 	//var timeZone = map[string]Repo
@@ -90,13 +98,13 @@ func main() {
 	
 	start := time.Now().Unix()
 	//Fetch User Events By Organizations
-	opts := &github.ListOptions{Page: 0, PerPage: 10}
-	events, _, err := client.Activity.ListUserEventsForOrganization("koombea", "davidpabon", opts)
+	opts := &github.ListOptions{Page: 0, PerPage: 30}
+	events, _, err := client.Activity.ListUserEventsForOrganization(organization, username, opts)
 
 	if err != nil {
 		fmt.Printf("Error listing events: %s\n", err)
 	} else {	
-		fmt.Printf("Total Events : %v\n", len(events))
+		fmt.Printf("Total Events: %v\n", len(events))
 		for _, event := range events {
 
 			if _, ok := repos[*event.Repo.Name]; !ok {
@@ -111,13 +119,11 @@ func main() {
 				}
 			}
 		}
-
-		for name, repository := range repos {
-			fmt.Printf("Repo: %v, Created By: %v\n", name, *repository.Owner.Login)
-		}
 	}
-	end := time.Now().Unix()
-	fmt.Printf("Time elapsed: %v - %v = %v\n", end, start, end - start)
 
+	end := time.Now().Unix()
+	fmt.Printf("Total Repos: %v\n", len(repos))
+	//fmt.Printf("Total Repos: %v\n", repos)
+	fmt.Printf("Time elapsed: %v - %v = %v\n", end, start, end - start)
 }
 */
