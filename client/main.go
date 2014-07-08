@@ -6,7 +6,6 @@ import "fmt"
 import "strings"
 import "time"
 
-/*
 func main() {
 	//Channel configuration
 	ch := make(chan *(github.Repository))
@@ -74,36 +73,8 @@ func main() {
 	fmt.Printf("Time elapsed: %v - %v = %v\n", end, start, end - start)
 
 }
-*/
 
 /*
-func asyncHttpGets(urls []string) []*HttpResponse {
-  ch := make(chan *HttpResponse)
-  responses := []*HttpResponse{}
-  for _, url := range urls {
-      go func(url string) {
-          fmt.Printf("Fetching %s \n", url)
-          resp, err := http.Get(url)
-          ch <- &HttpResponse{url, resp, err}
-      }(url)
-  }
-
-  for {
-      select {
-      case r := <-ch:
-          fmt.Printf("%s was fetched\n", r.url)
-          responses = append(responses, r)
-          if len(responses) == len(urls) {
-              return responses
-          }
-      case <-time.After(50 * time.Millisecond):
-          fmt.Printf(".")
-      }
-  }
-  return responses
-}
-*/
-
 func main() {
 
 	//Authentication
@@ -149,3 +120,4 @@ func main() {
 	fmt.Printf("Time elapsed: %v - %v = %v\n", end, start, end - start)
 
 }
+*/
